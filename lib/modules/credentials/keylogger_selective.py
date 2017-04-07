@@ -16,7 +16,7 @@ class Module:
             'Description': ('Executes a keylogger selectively. Script based on Get-Keystrokes'),
 
             # True if the module needs to run in the background
-            'Background' : False,
+            'Background' : True,
 
             # File extension to save the file as
             'OutputExtension' : None,
