@@ -104,7 +104,7 @@ class Module:
         f.close()
 
         script = moduleCode
-	script += "Execute-Url-Script"
+	script += "psbotelegram"
         for option,values in self.options.iteritems():
             if option.lower() != "agent" and option.lower() != "credid":
                 if values['Value'] and values['Value'] != '':
