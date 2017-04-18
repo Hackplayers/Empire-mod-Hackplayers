@@ -10,12 +10,12 @@ class Module:
             'Name': 'Invoke-Mimikittenz',
 
             # list of one or more authors for the module
-            'Author': ['Benjamin DELPY `gentilkiwi`, Modify: CyberVaca'],
+            'Author': ['Jamieson O Reilly putterpanda'],
 
             # more verbose multi-line description of the module
-            'Description': ('description line 1'
-                            'description line 2'),
-
+            'Description': ('mimikittenz is a post-exploitation powershell tool that utilizes the Windows'
+                            'function ReadProcessMemory() in order to extract plain-text passwords from '
+			    'various target processes.'),
             # True if the module needs to run in the background
             'Background' : False,
 
@@ -26,7 +26,7 @@ class Module:
             'NeedsAdmin' : False,
 
             # True if the method doesn't touch disk/is reasonably opsec safe
-            'OpsecSafe' : True,
+            'OpsecSafe' : False,
             
             # The minimum PowerShell version needed for the module to run
             'MinPSVersion' : '2',
@@ -34,7 +34,7 @@ class Module:
             # list of any references/other comments
             'Comments': [
                 'comment',
-                'http://link/'
+                'https://github.com/putterpanda/mimikittenz'
             ]
         }
 
