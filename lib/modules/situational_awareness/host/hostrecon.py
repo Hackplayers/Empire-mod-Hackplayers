@@ -14,8 +14,8 @@ class Module:
 
             # more verbose multi-line description of the module
             'Description': ('Invoke-HostRecon runs a number of checks on a system '
-                            'to help provide situational awareness to a penetration tester',
-			    'during the reconnaissance phase of a engagement.'
+                            'to help provide situational awareness to a penetration tester'
+			    'during the reconnaissance phase of a engagement.'),
 
             # True if the module needs to run in the background
             'Background' : True,
