@@ -31,12 +31,12 @@ PowerShell Empire mod to post-exploit the World!
 
 # Modules added
 
-Invoke-Mimikittenz
-Invoke-Mimigatoz (Variant of Mimikatz)
-Keylogger_selective	(Executes a keylogger selectively)
-PsBoTelegram (Backdoor controlled from telegram)
-Execute-Url-Script (Run scripts from a file in a url)
-MS16-135 (Exploit MS16-135 x64 by b33f FuzzySecurity)
-Invoke-HostRecon (Situational Awareness)
+&nbsp;&nbsp;&nbsp;**Invoke-Mimikittenz**&nbsp;&nbsp;  
+&nbsp;&nbsp;&nbsp;**Invoke-Mimigatoz**&nbsp;&nbsp; (Variant of Mimikatz)  
+&nbsp;&nbsp;&nbsp;**Keylogger_selective**&nbsp;&nbsp;	(Executes a keylogger selectively)  
+&nbsp;&nbsp;&nbsp;**PsBoTelegram**&nbsp;&nbsp; (Backdoor controlled from telegram)  
+&nbsp;&nbsp;&nbsp;**Execute-Url-Script**&nbsp;&nbsp; (Run scripts from a file in a url)  
+&nbsp;&nbsp;&nbsp;**MS16-135**&nbsp;&nbsp; (Exploit MS16-135 x64 by b33f FuzzySecurity)  
+&nbsp;&nbsp;&nbsp;**Invoke-HostRecon**&nbsp;&nbsp; (Situational Awareness)  
 
 
