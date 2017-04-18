@@ -44,7 +44,7 @@ PowerShell Empire mod to post-exploit the World!
     git clone https://github.com/hackplayers/empire-mod-hackplayers.git
     cd empire-mod-hackplayers/setup/
     sudo apt-get update > /dev/null
-    ./install
+    ./install.sh
     cd ..
     ./empire
     
