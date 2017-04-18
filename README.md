@@ -39,4 +39,12 @@ PowerShell Empire mod to post-exploit the World!
 &nbsp;&nbsp;&nbsp;**MS16-135**&nbsp;&nbsp; (Exploit MS16-135 x64 by b33f FuzzySecurity)  
 &nbsp;&nbsp;&nbsp;**Invoke-HostRecon**&nbsp;&nbsp; (Situational Awareness)  
 
+# Install in Linux
 
+    git clone https://github.com/hackplayers/empire-mod-hackplayers.git
+    cd empire-mod-hackplayers/setup/
+    sudo apt-get update > /dev/null
+    ./install
+    cd..
+    ./empire
+    
