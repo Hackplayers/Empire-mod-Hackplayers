@@ -31,7 +31,7 @@ PowerShell Empire mod to post-exploit the World!
 
 # Modules added
 
-&nbsp;&nbsp;&nbsp;**BypassUAC-HackPlayers-eventvwr.ps1**&nbsp;&nbsp;	(BypassUAC using eventvwr)  
+&nbsp;&nbsp;&nbsp;**BypassUAC-HackPlayers-eventvwr.ps1**&nbsp;&nbsp;	(BypassUAC using eventvwr working in Windows 7/8/10)  
 &nbsp;&nbsp;&nbsp;**Invoke-Mimikittenz**&nbsp;&nbsp;(Using Windows function ReadProcessMemory() in order to extract plain-text passwords)  
 &nbsp;&nbsp;&nbsp;**Invoke-Mimigatoz**&nbsp;&nbsp; (Variant of Mimikatz)  
 &nbsp;&nbsp;&nbsp;**Keylogger_selective**&nbsp;&nbsp;	(Executes a keylogger selectively)  
