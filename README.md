@@ -28,3 +28,15 @@ PowerShell Empire mod to post-exploit the World!
        0 agents currently active
        
        (Empire) > 
+
+# Modules added
+
+Invoke-Mimikittenz
+Invoke-Mimigatoz (Variant of Mimikatz)
+Keylogger_selective	(Executes a keylogger selectively)
+PsBoTelegram (Backdoor controlled from telegram)
+Execute-Url-Script (Run scripts from a file in a url)
+MS16-135 (Exploit MS16-135 x64 by b33f FuzzySecurity)
+Invoke-HostRecon (Situational Awareness)
+
+
