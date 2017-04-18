@@ -83,7 +83,7 @@ class Module:
         # if you're reading in a large, external script that might be updates,
         #   use the pattern below
         # read in the common module source code
-        moduleSource = self.mainMenu.installPath + "/data/module_source/credentials/Invoke-Mimikittenz.ps1"
+        moduleSource = self.mainMenu.installPath + "/data/module_source/situational_awareness/host/hostrecon.ps1"
         try:
             f = open(moduleSource, 'r')
         except:
