@@ -38,6 +38,7 @@ PowerShell Empire mod to post-exploit the World!
 &nbsp;&nbsp;&nbsp;**Execute-Url-Script**&nbsp;&nbsp; (Run scripts from a file in a url)  
 &nbsp;&nbsp;&nbsp;**MS16-135**&nbsp;&nbsp; (Exploit MS16-135 x64 by b33f FuzzySecurity)  
 &nbsp;&nbsp;&nbsp;**Invoke-HostRecon**&nbsp;&nbsp; (Situational Awareness)  
+&nbsp;&nbsp;&nbsp;**BypassUAC-HackPlayers-eventvwr.ps1**&nbsp;&nbsp;	(BypassUAC using eventvwr)  
 
 # Install in Linux
 
