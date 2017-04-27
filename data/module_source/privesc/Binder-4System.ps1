@@ -1,4 +1,4 @@
-﻿function binder-4system {
+function binder-4system {
 param ([string]$process,[string]$command_execute)
 
 $nombre_objetivo =  $process
