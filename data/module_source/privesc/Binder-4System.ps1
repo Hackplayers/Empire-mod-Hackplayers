@@ -1,13 +1,13 @@
 function binder-4system {
-param ([string]$process,[string]$command_execute)
+param ([string]$procID,[string]$command_execute)
 
+$process_target =  Get-Process -id $procid
 $nombre_objetivo =  $process
-$nombre_objetivo = $nombre_objetivo -replace ".exe",""
-$process_name = $nombre_objetivo
-$process_target =  Get-Process | Where-Object {$_.ProcessName -like "$nombre_objetivo"}
+$nombre_objetivo = $process_target.Name
+$process_name = $process_target.Name
 $path_process =  ($process_target | Select-Object -Property *).path
 $pid_target = $process_target.Id
-$service_name = (Get-WmiObject Win32_Service -Filter "ProcessId='$($pid_target)'").name
+$service_name = (Get-WmiObject Win32_Service -Filter "ProcessId='$($procID)'").name
 
 if ($nombre_objetivo,$process_target,$path_process,$pid_target,$service_name -eq $null ) {write-host "Script Error."; break} else {
 write-host 
@@ -124,6 +124,7 @@ Remove-Item $nombre_final
 Remove-Item $nombre_objetivo_bkp 
 Start-Service -Name $service_name
 start-Service -Name EventLog 
+write-host "Script executed succefully"
 
 }
 
