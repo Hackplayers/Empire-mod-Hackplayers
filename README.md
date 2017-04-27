@@ -40,7 +40,7 @@ PowerShell Empire mod to post-exploit the World!
 &nbsp;&nbsp;&nbsp;**Sherlock**&nbsp;&nbsp; (Find privilege escalation vulnerabilities)  
 &nbsp;&nbsp;&nbsp;**MS16-135**&nbsp;&nbsp; (Exploit privilege escalation MS16-135 x64 by b33f FuzzySecurity)  
 &nbsp;&nbsp;&nbsp;**Invoke-HostRecon**&nbsp;&nbsp; (Situational Awareness)  
-&nbsp;&nbsp;&nbsp;**Binder-4System**&nbsp;&nbsp; (Get System, coming soon.)  
+&nbsp;&nbsp;&nbsp;**Binder-4System**&nbsp;&nbsp; (Get System, comming soon.)  
 
 
 # Install in Linux
