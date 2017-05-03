@@ -43,7 +43,7 @@ PowerShell Empire mod to post-exploit the World!
 &nbsp;&nbsp;&nbsp;**Binder-4System**&nbsp;&nbsp; (Get System from service process)  
 
 
-# Install in Linux
+# Install in Debian
 
     git clone https://github.com/hackplayers/empire-mod-hackplayers.git
     cd empire-mod-hackplayers/setup/
@@ -52,3 +52,16 @@ PowerShell Empire mod to post-exploit the World!
     cd ..
     ./empire
     
+ # Install in Arch
+     git clone https://github.com/hackplayers/empire-mod-hackplayers.git
+     cd empire-mod-hackplayers/setup/
+     yaourt -S swig2
+     sudo ln -s /usr/bin/swig-2 /usr/bin/swig
+     pip install pycrypto iptools pydispatcher m2crypto m2ext
+     sudo rm /usr/bin/swig
+     python setup_database.py
+     ./cert.sh
+     cd ..
+     python empire.py
+
+     
