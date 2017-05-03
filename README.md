@@ -54,12 +54,13 @@ PowerShell Empire mod to post-exploit the World!
     
  # Install in Arch
      git clone https://github.com/hackplayers/empire-mod-hackplayers.git
-     cd empire-mod-hackplayers/setup/
+     cd empire-mod-hackplayers
      yaourt -S swig2
      sudo ln -s /usr/bin/swig-2 /usr/bin/swig
      pip install pycrypto iptools pydispatcher m2crypto m2ext
      sudo rm /usr/bin/swig
      python setup_database.py
+     cd setup
      ./cert.sh
      cd ..
      python empire.py
