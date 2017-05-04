@@ -14,13 +14,10 @@ class Module:
 
             # more verbose multi-line description of the module
             'Description': ('This script walks thread stacks of Event Log Service process (spesific svchost.exe) and identify'
-                            'Event Log Threads to kill Event Log Service Threads. So the system will not be able to collect'
-							'logs and at the same time the Event Log Service will appear to be running. I have made this script'
-							'for two reasons. First, This script will help to Red Teams and Penetration Testers. Second, I'
-							'want to learn Powershell and Low-Level things on Powershell for cyber security field.'),
+                            'Event Log Threads to kill Event Log Service Threads.'),
 
             # True if the module needs to run in the background
-            'Background' : False,
+            'Background' : True,
 
             # File extension to save the file as
             'OutputExtension' : None,
@@ -77,10 +74,6 @@ class Module:
         #
         # the script should be stripped of comments, with a link to any
         #   original reference script included in the comments.
-        script = """
-"""
-
-
         # if you're reading in a large, external script that might be updates,
         #   use the pattern below
         # read in the common module source code
@@ -95,17 +88,5 @@ class Module:
         f.close()
 
         script = moduleCode
-	script += "Invoke-Phant0m"
-
-
-        # add any arguments to the end execution of the script
-        for option,values in self.options.iteritems():
-            if option.lower() != "agent":
-                if values['Value'] and values['Value'] != '':
-                    if values['Value'].lower() == "true":
-                        # if we're just adding a switch
-                        script += " -" + str(option)
-                    else:
-                        script += " -" + str(option) + " " + str(values['Value'])
-
-        return script
+	script += "Invoke-Phant0m "
+	return script
