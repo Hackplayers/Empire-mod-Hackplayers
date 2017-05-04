@@ -60,8 +60,8 @@ PowerShell Empire mod to post-exploit the World!
      sudo ln -s /usr/bin/swig-2 /usr/bin/swig
      pip install pycrypto iptools pydispatcher m2crypto m2ext
      sudo rm /usr/bin/swig
-     python setup_database.py
      cd setup
+     python setup_database.py
      ./cert.sh
      cd ..
      python empire.py
