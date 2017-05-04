@@ -42,7 +42,7 @@ PowerShell Empire mod to post-exploit the World!
 &nbsp;&nbsp;&nbsp;**Invoke-HostRecon**&nbsp;&nbsp; (Situational Awareness)  
 &nbsp;&nbsp;&nbsp;**Binder-4System**&nbsp;&nbsp; (Get System from service process)  
 &nbsp;&nbsp;&nbsp;**Invoke-Phant0m**&nbsp;&nbsp; (Stops threads from the svhost process to prevent it from logging events without stopping the service.)  
-&nbsp;&nbsp;&nbsp;**Set-WindowsDefender**&nbsp;&nbsp; (With this module we can disabled and enabled Windows Defender silently, We recommend using after "Invoke-Phant0m")  
+&nbsp;&nbsp;&nbsp;**Set-WindowsDefender**&nbsp;&nbsp; (We can disabled and enabled Windows Defender silently, We recommend using after "Invoke-Phant0m")  
 
 
 # Install in Debian
