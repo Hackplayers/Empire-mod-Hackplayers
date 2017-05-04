@@ -53,7 +53,7 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
         [Int]$Id = -1
     )
 
-    $intro = @'
+    $intro = "
 
         _                 _    ___
   _ __ | |__   __ _ _ __ | |_ / _ \ _ __ ___
@@ -62,7 +62,7 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
  | .__/|_| |_|\__,_|_| |_|\__|\___/|_| |_| |_|
  |_|
 
-'@
+"
 
     
     $resultado = $intro
@@ -1040,7 +1040,7 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
     $eventLogThreads = $ReturnedObjects | Where-Object {$_.MappedFile -like '*evt*'} | %{$_.ThreadId }
     $resultado += "[*] Parsing Event Log Service Threads..." 
     if(!($eventLogThreads)) {
-       "[!] There are no Event Log Service Threads, Event Log Service is not working!" -ForegroundColor Red
+      $resultado += "[!] There are no Event Log Service Threads, Event Log Service is not working!"
       $resultado += "[+] You are ready to go! `n"
       
     }
@@ -1058,6 +1058,6 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
         
     }
 
-
+return $resultado
     [GC]::Collect()
 }
