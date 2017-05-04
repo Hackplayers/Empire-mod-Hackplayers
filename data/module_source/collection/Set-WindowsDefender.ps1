@@ -35,7 +35,7 @@ return $resultado
 }
 
 if ($Enable -eq $False -and $Disable -eq $False){
-if ((Get-Process -Name MSASCUI -ErrorAction SilentlyContinue) -eq $true ) {$resultado += "[+] Windows Defender is Enabled"} else {$resultado += "[+] Windows Defender is Disabled"}
+if ((Get-Process -Name MSASCUI -ErrorAction SilentlyContinue).count -ge 1 ) {$resultado += "[+] Windows Defender is Enabled"} else {$resultado += "[+] Windows Defender is Disabled"}
 return $resultado
 }}
 
