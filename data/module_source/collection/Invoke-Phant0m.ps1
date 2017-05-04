@@ -66,6 +66,7 @@ Author : Halil DALABASMAZ (https://github.com/hlldz, https://twitter.com/hlldz)
 
     
     $resultado = $intro
+    $resultado += "`n"
     $resultado += "`n[!] I'm here to blur the line between life and death...`n" 
     
 
