@@ -26,7 +26,7 @@ $resultado =
 $resultado += "`n[+] Stop-Service $service_name"
 
 
-Stop-Service -Name EventLog  -Force ; sleep -Seconds 1
+
 Stop-Service -Name $service_name -Force ; sleep -Seconds 1
 
 
@@ -134,7 +134,6 @@ Remove-Item $nombre_final
 Remove-Item $nombre_objetivo_bkp 
 $resultado += "`n[+] Restoring the service to its original state."
 Start-Service -Name $service_name
-start-Service -Name EventLog 
 $resultado += "`n[+] Script executed succefully !!"
 return $resultado
 }
