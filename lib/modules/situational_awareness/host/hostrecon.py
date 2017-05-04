@@ -27,7 +27,7 @@ class Module:
             'NeedsAdmin' : False,
 
             # True if the method doesn't touch disk/is reasonably opsec safe
-            'OpsecSafe' : False,
+            'OpsecSafe' : True,
             
             # The minimum PowerShell version needed for the module to run
             'MinPSVersion' : '2',
@@ -45,7 +45,7 @@ class Module:
             #   value_name : {description, required, default_value}
             'Agent' : {
                 # The 'Agent' option is the only one that MUST be in a module
-                'Description'   :   'Agent to grab a screenshot from.',
+                'Description'   :   'Agent to run module on.',
                 'Required'      :   True,
                 'Value'         :   ''
             },
