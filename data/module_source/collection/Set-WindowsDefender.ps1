@@ -24,7 +24,10 @@ return $resultado
 
 if ($Enable -eq $True) {
 $proceso = 'C:\Program Files\Windows Defender\MSASCui.exe'
-Start-Process $proceso -WindowStyle Hidden
+$startExe = New-Object System.Diagnostics.ProcessStartInfo 
+$startExe.WindowStyle = "hidden"
+$startExe.FileName = $proceso
+[System.Diagnostics.Process]::Start($startExe) | Out-Null
 Set-MpPreference -DisableIOAVProtection $False
 Set-MpPreference -DisableRealtimeMonitoring $False
 Set-MpPreference -DisableIntrusionPreventionSystem $False
@@ -38,4 +41,3 @@ if ($Enable -eq $False -and $Disable -eq $False){
 if ((Get-Process -Name MSASCUI -ErrorAction SilentlyContinue).count -ge 1 ) {$resultado += "[+] Windows Defender is Enabled"} else {$resultado += "[+] Windows Defender is Disabled"}
 return $resultado
 }}
-
