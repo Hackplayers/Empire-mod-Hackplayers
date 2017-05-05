@@ -13,7 +13,7 @@ $resultado = $banner
 $resultado += "`n`n                                                                   CyberVaca @ HackPlayers`n`n" 
 
 if ($Enable -like "*True*") {Set-MpPreference -DisableIOAVProtection $False ; $resultado += "[+] Windows Defender right now is Enabled" ; return $resultado}
-if ($Enable -like "*False*") {Set-MpPreference -DisableIOAVProtection $True ;$resultado += "[+] Windows Defender right now is Enabled" ; return $resultado}
+if ($Enable -like "*False*") {Set-MpPreference -DisableIOAVProtection $True ;$resultado += "[+] Windows Defender right now is Disabled :D" ; return $resultado}
 
 }
 
