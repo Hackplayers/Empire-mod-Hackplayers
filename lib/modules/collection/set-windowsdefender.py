@@ -49,15 +49,9 @@ class Module:
             },
 			'Enable' : {
                 # The 'Agent' option is the only one that MUST be in a module
-                'Description'   :   'True if you wan enable',
+                'Description'   :   'True/False',
                 'Required'      :   False,
-                'Value'         :   ''
-            },
-			'Disable' : {
-                # The 'Agent' option is the only one that MUST be in a module
-                'Description'   :   'True if you wan disable',
-                'Required'      :   False,
-                'Value'         :   ''
+                'Value'         :   'True'
             }
         }
 
@@ -106,10 +100,8 @@ class Module:
         for option,values in self.options.iteritems():
             if option.lower() != "agent":
                 if values['Value'] and values['Value'] != '':
-                    if values['Value'].lower() == "true":
+                  #  if values['Value'].lower() == "true":
                         # if we're just adding a switch
-                        script += " -" + str(option)
-                    else:
                         script += " -" + str(option) + " " + str(values['Value'])
 
         return script
