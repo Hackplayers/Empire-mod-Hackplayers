@@ -1,6 +1,6 @@
 # Empire-mod-Hackplayers
 
-![Empire-mod-Hackplayers logo](./images/Empire_mod_Hackplayers.png)  
+![Empire-mod-Hackplayers logo](./Empire_mod_Hackplayers.png)  
 
 PowerShell Empire mod to post-exploit the World!
 
