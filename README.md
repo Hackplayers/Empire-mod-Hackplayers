@@ -70,4 +70,5 @@ PowerShell Empire mod to post-exploit the World!
      
 ![empire_mod_hackplayers.png logo](./empire_mod_hackplayers.png)  
 
-[![PoC Video](./img/main.png)](https://www.youtube.com/watch?v=vp721ZhiQOo)
+# Video Demo
+[![Demo Video](./img/main.png)](https://www.youtube.com/watch?v=vp721ZhiQOo)
