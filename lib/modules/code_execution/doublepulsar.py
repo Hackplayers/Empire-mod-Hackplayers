@@ -13,7 +13,7 @@ class Module:
             'Author': ['Matt Hillman, Company Countercept.com, Script : Luis Vacas @ CyberVaca'],
 
             # more verbose multi-line description of the module
-            'Description': ('DoublePulsar load an aribitrary DLL in othe process.'),
+            'Description': ('DoublePulsar load an aribitrary DLL in other process.'),
 
             # True if the module needs to run in the background
             'Background' : False,
