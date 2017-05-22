@@ -22,7 +22,7 @@ PowerShell Empire mod to post-exploit the World!
        |_______||__|  |__| | _|      |__| | _| `._____||_______|  Mod: HackPlayers
        
        
-       207 modules currently loaded
+       208 modules currently loaded
        
        0 listeners currently active
        
@@ -44,6 +44,7 @@ PowerShell Empire mod to post-exploit the World!
 &nbsp;&nbsp;&nbsp;**Binder-4System**&nbsp;&nbsp; (Get System from service process)  
 &nbsp;&nbsp;&nbsp;**Invoke-Phant0m**&nbsp;&nbsp; (Stops threads from the svhost process to prevent it from logging events without stopping the service.)  
 &nbsp;&nbsp;&nbsp;**Set-WindowsDefender**&nbsp;&nbsp; (We can disabled and enabled Windows Defender silently)  
+&nbsp;&nbsp;&nbsp;**DoublePulsar**&nbsp;&nbsp; (DoublePulsar inject an aribitrary DLL in other process)  
 
 
 # Install in Debian
