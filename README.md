@@ -22,7 +22,7 @@ PowerShell Empire mod to post-exploit the World!
        |_______||__|  |__| | _|      |__| | _| `._____||_______|  Mod: HackPlayers
        
        
-       208 modules currently loaded
+       209 modules currently loaded
        
        0 listeners currently active
        
@@ -32,6 +32,7 @@ PowerShell Empire mod to post-exploit the World!
 
 # Modules added
 
+&nbsp;&nbsp;&nbsp;**BypassUAC-Fodhelper.ps1**&nbsp;&nbsp;	(BypassUAC using fodhelper working in Windows 10)  
 &nbsp;&nbsp;&nbsp;**BypassUAC-HackPlayers-eventvwr.ps1**&nbsp;&nbsp;	(BypassUAC using eventvwr working in Windows 7/8/10)  
 &nbsp;&nbsp;&nbsp;**Invoke-Mimikittenz**&nbsp;&nbsp;(Using Windows function ReadProcessMemory() in order to extract plain-text passwords)  
 &nbsp;&nbsp;&nbsp;**Invoke-Mimigatoz**&nbsp;&nbsp; (Variant of Mimikatz)  
