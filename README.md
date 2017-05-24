@@ -56,20 +56,7 @@ PowerShell Empire mod to post-exploit the World!
     ./install.sh
     cd ..
     ./empire
-    
- # Install in Arch
-     git clone https://github.com/hackplayers/empire-mod-hackplayers.git
-     cd empire-mod-hackplayers
-     yaourt -S swig2
-     sudo ln -s /usr/bin/swig-2 /usr/bin/swig
-     pip install pycrypto iptools pydispatcher m2crypto m2ext
-     sudo rm /usr/bin/swig
-     cd setup
-     python setup_database.py
-     ./cert.sh
-     cd ..
-     python empire.py
-     
+
 ![empire_mod_hackplayers.png logo](./empire_mod_hackplayers.png)  
 
 # Video Demo
