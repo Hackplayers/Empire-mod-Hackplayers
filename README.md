@@ -50,6 +50,7 @@ PowerShell Empire mod to post-exploit the World!
 
 # Stagers added
 &nbsp;&nbsp;&nbsp;**StarFighters JS**&nbsp;&nbsp;  
+&nbsp;&nbsp;&nbsp;**StarFighters VBS**&nbsp;&nbsp;  
 
 
 # Install in Debian
