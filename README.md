@@ -22,7 +22,7 @@ PowerShell Empire mod to post-exploit the World!
        |_______||__|  |__| | _|      |__| | _| `._____||_______|  Mod: HackPlayers
        
        
-       209 modules currently loaded
+       210 modules currently loaded
        
        0 listeners currently active
        
@@ -46,6 +46,7 @@ PowerShell Empire mod to post-exploit the World!
 &nbsp;&nbsp;&nbsp;**Invoke-Phant0m**&nbsp;&nbsp; (Stops threads from the svhost process to prevent it from logging events without stopping the service.)  
 &nbsp;&nbsp;&nbsp;**Set-WindowsDefender**&nbsp;&nbsp; (We can disabled and enabled Windows Defender silently)  
 &nbsp;&nbsp;&nbsp;**DoublePulsar**&nbsp;&nbsp; (DoublePulsar inject an aribitrary DLL in other process)  
+&nbsp;&nbsp;&nbsp;**Get-ShellContent**&nbsp;&nbsp; (This script leverages modified strings2 to extract the input and output of any commandline process, running or dumped, encrypted or plaintext)  
 
 
 # Install in Debian
