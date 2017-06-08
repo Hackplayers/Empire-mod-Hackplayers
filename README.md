@@ -48,6 +48,9 @@ PowerShell Empire mod to post-exploit the World!
 &nbsp;&nbsp;&nbsp;**DoublePulsar**&nbsp;&nbsp; (DoublePulsar inject an aribitrary DLL in other process)  
 &nbsp;&nbsp;&nbsp;**Get-ShellContent**&nbsp;&nbsp; (This script leverages modified strings2 to extract the input and output of any commandline process)  
 
+# Stagers added
+&nbsp;&nbsp;&nbsp;**StarFighters JS**&nbsp;&nbsp;  
+
 
 # Install in Debian
 
