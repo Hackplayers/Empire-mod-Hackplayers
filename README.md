@@ -22,7 +22,7 @@ PowerShell Empire mod to post-exploit the World!
        |_______||__|  |__| | _|      |__| | _| `._____||_______|  Mod: HackPlayers
        
        
-       211 modules currently loaded
+       213 modules currently loaded
        
        0 listeners currently active
        
@@ -49,6 +49,8 @@ PowerShell Empire mod to post-exploit the World!
 &nbsp;&nbsp;&nbsp;**Get-ShellContent**&nbsp;&nbsp; (This script leverages modified strings2 to extract the input and output of any commandline process)  
 &nbsp;&nbsp;&nbsp;**Invoke-VNC**&nbsp;&nbsp;  (This module loads a VNC server into RAM.)  
 &nbsp;&nbsp;&nbsp;**Invoke-PsInject**&nbsp;&nbsp;  (Invoke-Psinject Fixed by byt3bl33d3r)  
+&nbsp;&nbsp;&nbsp;**Invoke-DCOM**&nbsp;&nbsp;  (Execute's commands via various DCOM methods, by (@enigma0x3) lateral movement)  
+
 
 
 # Stagers added
