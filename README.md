@@ -47,8 +47,8 @@ PowerShell Empire mod to post-exploit the World!
 &nbsp;&nbsp;&nbsp;**Set-WindowsDefender**&nbsp;&nbsp; (We can disabled and enabled Windows Defender silently)  
 &nbsp;&nbsp;&nbsp;**DoublePulsar**&nbsp;&nbsp; (DoublePulsar inject an aribitrary DLL in other process)  
 &nbsp;&nbsp;&nbsp;**Get-ShellContent**&nbsp;&nbsp; (This script leverages modified strings2 to extract the input and output of any commandline process)  
-&nbsp;&nbsp;&nbsp;**Invoke-VNC**&nbsp;&nbsp;  (This module loads a VNC server into RAM.)
-&nbsp;&nbsp;&nbsp;**Invoke-PsInject**&nbsp;&nbsp;  (Invoke-Psinject Fixed by byt3bl33d3r)
+&nbsp;&nbsp;&nbsp;**Invoke-VNC**&nbsp;&nbsp;  (This module loads a VNC server into RAM.)  
+&nbsp;&nbsp;&nbsp;**Invoke-PsInject**&nbsp;&nbsp;  (Invoke-Psinject Fixed by byt3bl33d3r)  
 
 
 # Stagers added
