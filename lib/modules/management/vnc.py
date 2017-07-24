@@ -19,6 +19,8 @@ class Module:
 
             'OpsecSafe' : True,
 
+            'MinPSVersion' : '2',
+
             'Comments': [
                 'https://github.com/artkond/Invoke-Vnc'
             ]
