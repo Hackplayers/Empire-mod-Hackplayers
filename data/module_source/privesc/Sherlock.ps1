@@ -1,4 +1,10 @@
-#Author: @_RastaMouse
+<#
+
+    File: Sherlock.ps1
+    Author: @_RastaMouse
+    License: GNU General Public License v3.0
+
+#>
 
 $Global:ExploitTable = $null
 
@@ -10,6 +16,16 @@ function Get-FileVersionInfo ($FilePath) {
     return $FileVersion
 
 }
+
+function Get-InstalledSoftware($SoftwareName) {
+
+    $SoftwareVersion = Get-WmiObject -Class Win32_Product | Where { $_.Name -eq $SoftwareName } | Select-Object Version
+    $SoftwareVersion = $SoftwareVersion.Version  # I have no idea what I'm doing
+    
+    return $SoftwareVersion
+
+}
+
 
 function Get-Architecture {
 
@@ -51,16 +67,33 @@ function New-ExploitTable {
     # MS16
     $Global:ExploitTable.Rows.Add("'mrxdav.sys' WebDAV","MS16-016","2016-0051","https://www.exploit-db.com/exploits/40085/")
     $Global:ExploitTable.Rows.Add("Secondary Logon Handle","MS16-032","2016-0099","https://www.exploit-db.com/exploits/39719/")
+    # Miscs that aren't MS
+    $Global:ExploitTable.Rows.Add("Nessus Agent 6.6.2 - 6.10.3","N/A","2017-7199","https://aspe1337.blogspot.co.uk/2017/04/writeup-of-cve-2017-7199.html")
 
 }
 
 function Set-ExploitTable ($MSBulletin, $VulnStatus) {
 
-    $Global:ExploitTable | Where { $_.MSBulletin -eq $MSBulletin
+    if ( $MSBulletin -like "MS*" ) {
 
-    } | ForEach-Object {
+        $Global:ExploitTable | Where { $_.MSBulletin -eq $MSBulletin
 
-        $_.VulnStatus = $VulnStatus
+        } | ForEach-Object {
+
+            $_.VulnStatus = $VulnStatus
+
+        }
+
+    } else {
+
+
+    $Global:ExploitTable | Where { $_.CVEID -eq $MSBulletin
+
+        } | ForEach-Object {
+
+            $_.VulnStatus = $VulnStatus
+
+        }
 
     }
 
@@ -89,6 +122,7 @@ function Find-AllVulns {
         Find-MS15078
         Find-MS16016
         Find-MS16032
+        Find-CVE20177199
 
         Get-Results
 
@@ -123,7 +157,7 @@ function Find-MS10015 {
         # Decide which versions are vulnerable
         switch ( $Build ) {
 
-            7600 { if ( $Revision -le "20591" ) { $VulnStatus = "Appears Vulnerable" } }
+            7600 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "20591" ] }
             default { $VulnStatus = "Not Vulnerable" }
 
         }
@@ -160,7 +194,7 @@ function Find-MS10092 {
         # Decide which versions are vulnerable
         switch ( $Build ) {
 
-            7600 { if ( $Revision -le "20830" ) { $VulnStatus = "Appears Vulnerable" } }
+            7600 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "20830" ] }
             default { $VulnStatus = "Not Vulnerable" }
 
         }
@@ -205,9 +239,9 @@ function Find-MS13053 {
         # Decide which versions are vulnerable
         switch ( $Build ) {
 
-            7600 { if ( $Revision -ge "17000" ) { $VulnStatus = "Appears Vulnerable" } }
-            7601 { if ( $Revision -le "22348" ) { $VulnStatus = "Appears Vulnerable" } }
-            9200 { if ( $Revision -le "20732" ) { $VulnStatus = "Appears Vulnerable" } }
+            7600 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -ge "17000" ] }
+            7601 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "22348" ] }
+            9200 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "20732" ] }
             default { $VulnStatus = "Not Vulnerable" }
 
         }
@@ -248,9 +282,9 @@ function Find-MS13081 {
         # Decide which versions are vulnerable
         switch ( $Build ) {
 
-            7600 { if ( $Revision -ge "18000" ) { $VulnStatus = "Appears Vulnerable" } }
-            7601 { if ( $Revision -le "22435" ) { $VulnStatus = "Appears Vulnerable" } }
-            9200 { if ( $Revision -le "20807" ) { $VulnStatus = "Appears Vulnerable" } }
+            7600 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -ge "18000" ] }
+            7601 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "22435" ] }
+            9200 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "20807" ] }
             default { $VulnStatus = "Not Vulnerable" }
 
         }
@@ -287,10 +321,10 @@ function Find-MS14058 {
         # Decide which versions are vulnerable
         switch ( $Build ) {
 
-            7600 { if ( $Revision -ge "18000" ) { $VulnStatus = "Appears Vulnerable" } }
-            7601 { if ( $Revision -le "22823" ) { $VulnStatus = "Appears Vulnerable" } }
-            9200 { if ( $Revision -le "21247" ) { $VulnStatus = "Appears Vulnerable" } }
-            9600 { if ( $Revision -le "17353" ) { $VulnStatus = "Appears Vulnerable" } }
+            7600 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -ge "18000" ] }
+            7601 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "22823" ] }
+            9200 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "21247" ] }
+            9600 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "17353" ] }
             default { $VulnStatus = "Not Vulnerable" }
 
         }
@@ -331,10 +365,10 @@ function Find-MS15051 {
         # Decide which versions are vulnerable
         switch ( $Build ) {
 
-            7600 { if ( $Revision -ge "18000" ) { $VulnStatus = "Appears Vulnerable" } }
-            7601 { if ( $Revision -le "22823" ) { $VulnStatus = "Appears Vulnerable" } }
-            9200 { if ( $Revision -le "21247" ) { $VulnStatus = "Appears Vulnerable" } }
-            9600 { if ( $Revision -le "17353" ) { $VulnStatus = "Appears Vulnerable" } }
+            7600 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -ge "18000" ] }
+            7601 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "22823" ] }
+            9200 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "21247" ] }
+            9600 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "17353" ] }
             default { $VulnStatus = "Not Vulnerable" }
 
         }
@@ -407,12 +441,12 @@ function Find-MS16016 {
         # Decide which versions are vulnerable
         switch ( $Build ) {
 
-            7600 { if ( $Revision -ge "16000" ) { $VulnStatus = "Appears Vulnerable" } }
-            7601 { if ( $Revision -le "23317" ) { $VulnStatus = "Appears Vulnerable" } }
-            9200 { if ( $Revision -le "21738" ) { $VulnStatus = "Appears Vulnerable" } }
-            9600 { if ( $Revision -le "18189" ) { $VulnStatus = "Appears Vulnerable" } }
-            10240 { if ( $Revision -le "16683" ) { $VulnStatus = "Appears Vulnerable" } }
-            10586 { if ( $Revision -le "103" ) { $VulnStatus = "Appears Vulnerable" } }
+            7600 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -ge "16000" ] }
+            7601 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "23317" ] }
+            9200 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "21738" ] }
+            9600 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "18189" ] }
+            10240 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "16683" ] }
+            10586 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le "103" ] }
             default { $VulnStatus = "Not Vulnerable" }
 
         }
@@ -443,19 +477,18 @@ function Find-MS16032 {
         $VersionInfo = $VersionInfo.Split(".")
 
         # Get the Build and Revision
-        $Build = $VersionInfo[2]
-        $Revision = $VersionInfo[3].Split(" ")[0] # Drop the junk
-
+        $Build = [int]$VersionInfo[2]
+        $Revision = [int]$VersionInfo[3].Split(" ")[0] # Drop the junk
         # Decide which versions are vulnerable
         switch ( $Build ) {
-
-            7600 { if ( $Revision -ge "16000" ) { $VulnStatus = "Appears Vulnerable" } }
-            7601 { if ( $Revision -le "23348" ) { $VulnStatus = "Appears Vulnerable" } }
-            9200 { if ( $Revision -le "21768" ) { $VulnStatus = "Appears Vulnerable" } }
-            9600 { if ( $Revision -le "18230" ) { $VulnStatus = "Appears Vulnerable" } }
-            10240 { if ( $Revision -le "16724" ) { $VulnStatus = "Appears Vulnerable" } }
-            10586 { if ( $Revision -le "162" ) { $VulnStatus = "Appears Vulnerable" } }
-            default { $VulnStatus = "Not Vulnerable" }
+            6002 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revison -lt 19598 -Or ( $Revision -ge 23000 -And $Revision -le 23909 ) ] } # Confirmed for Windows 2008
+            7600 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -ge 16000 ] } # Not sure about 7 RTM
+            7601 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -lt 19148 -Or ( $Revision -ge 23000 -And $Revision -le 23347 ) ] } # Confirmed for Windows 7 and 2008R2
+            9200 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revison -lt 17649 -Or ( $Revision -ge 21000 -And $Revision -le 21767 ) ] } # Confirmed for Windows 2012
+            9600 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revison -lt 18230 ] } # Confirmed for Windows 8.1 and 2012R2
+            10240 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -lt 16724 ] } # Confirmed for Windows 10
+            10586 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Revision -le 161 ] } # Confirmed for Windows 10 1151
+            default { $VulnStatus = "Not Vulnerable" } # If no match
 
         }
 
@@ -467,5 +500,42 @@ function Find-MS16032 {
 
     # Update the Exploit Table
     Set-ExploitTable $MSBulletin $VulnStatus
+
+}
+
+function Find-CVE20177199 {
+
+    # Set the CVE ID
+    $CVEID = "2017-7199"
+
+    # See if it's intalled and get the version
+    $SoftwareVersion = Get-InstalledSoftware "Nessus Agent"
+    
+    if ( !$SoftwareVersion ) {
+
+        $VulnStatus = "Not Vulnerable"
+
+    } else {
+
+        # Split
+        $SoftwareVersion = $SoftwareVersion.Split(".")
+
+        # Get the build parts
+        $Major = [int]$SoftwareVersion[0]
+        $Minor = [int]$SoftwareVersion[1]
+        $Build = [int]$SoftwareVersion[2]
+
+        # Decide which versions are vuln
+        switch( $Major ) {
+
+        6 { $VulnStatus = @("Not Vulnerable","Appears Vulnerable")[ $Minor -eq 10 -and $Build -le 3 -Or ( $Minor -eq 6 -and $Build -le 2 ) -Or ( $Minor -le 9 -and $Minor -ge 7 ) ] } # 6.6.2 - 6.10.3
+        default { $VulnStatus = "Not Vulnerable" }
+
+        }
+
+    }
+
+    # Update the Exploit Table
+    Set-ExploitTable $CVEID $VulnStatus
 
 }
