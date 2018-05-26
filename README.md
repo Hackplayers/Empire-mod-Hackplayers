@@ -1,9 +1,9 @@
 # Empire-mod-Hackplayers
 
-PowerShell Empire mod to post-exploit the World!
+PowerShell Empire mod to post-exploit the World! Linux, MacOS, Windows.
 
        ====================================================================================
-        Empire: PowerShell post-exploitation agent | [Version]: 2.0 Mod: HackPlayers 
+        Empire: PowerShell post-exploitation agent | [Version]: 2.3 Mod: HackPlayers 
        ====================================================================================
         [Web]: https://www.PowerShellEmpire.com/ | [Twitter]: @harmj0y, @sixdub, @enigma0x3
        ====================================================================================
@@ -22,7 +22,7 @@ PowerShell Empire mod to post-exploit the World!
        |_______||__|  |__| | _|      |__| | _| `._____||_______|  Mod: HackPlayers
        
        
-       213 modules currently loaded
+       288 modules currently loaded
        
        0 listeners currently active
        
@@ -35,7 +35,6 @@ PowerShell Empire mod to post-exploit the World!
 &nbsp;&nbsp;&nbsp;**BypassUAC-Fodhelper.ps1**&nbsp;&nbsp;	(BypassUAC using fodhelper working in Windows 10)  
 &nbsp;&nbsp;&nbsp;**BypassUAC-HackPlayers-eventvwr.ps1**&nbsp;&nbsp;	(BypassUAC using eventvwr working in Windows 7/8/10)  
 &nbsp;&nbsp;&nbsp;**Invoke-Mimikittenz**&nbsp;&nbsp;(Using Windows function ReadProcessMemory() in order to extract plain-text passwords)  
-&nbsp;&nbsp;&nbsp;**Invoke-Mimigatoz**&nbsp;&nbsp; (Variant of Mimikatz)  
 &nbsp;&nbsp;&nbsp;**Keylogger_selective**&nbsp;&nbsp;	(Executes a keylogger selectively)  
 &nbsp;&nbsp;&nbsp;**PsBoTelegram**&nbsp;&nbsp; (Backdoor controlled from telegram)  
 &nbsp;&nbsp;&nbsp;**Execute-Url-Script**&nbsp;&nbsp; (Run scripts from a file in a url)  
@@ -47,28 +46,23 @@ PowerShell Empire mod to post-exploit the World!
 &nbsp;&nbsp;&nbsp;**Set-WindowsDefender**&nbsp;&nbsp; (We can disabled and enabled Windows Defender silently)  
 &nbsp;&nbsp;&nbsp;**DoublePulsar**&nbsp;&nbsp; (DoublePulsar inject an aribitrary DLL in other process)  
 &nbsp;&nbsp;&nbsp;**Get-ShellContent**&nbsp;&nbsp; (This script leverages modified strings2 to extract the input and output of any commandline process)  
-&nbsp;&nbsp;&nbsp;**Invoke-VNC**&nbsp;&nbsp;  (This module loads a VNC server into RAM.)  
-&nbsp;&nbsp;&nbsp;**Invoke-PsInject**&nbsp;&nbsp;  (Invoke-Psinject Fixed by byt3bl33d3r)  
-&nbsp;&nbsp;&nbsp;**Invoke-DCOM**&nbsp;&nbsp;  (Execute's commands via various DCOM methods, by (@enigma0x3) lateral movement)  
-&nbsp;&nbsp;&nbsp;**PowerCat**&nbsp;&nbsp;  (Netcat: The powershell version.)  
-
-
+&nbsp;&nbsp;&nbsp;**Invoke-VNC**&nbsp;&nbsp; (This module loads a VNC server into RAM.)  
+&nbsp;&nbsp;&nbsp;**Powercat**&nbsp;&nbsp; (Netcat: The powershell version.)  
 
 # Stagers added
 &nbsp;&nbsp;&nbsp;**StarFighters JS**&nbsp;&nbsp;  
 &nbsp;&nbsp;&nbsp;**StarFighters VBS**&nbsp;&nbsp;  
-
+&nbsp;&nbsp;&nbsp;**StarFighters JS SCT**&nbsp;&nbsp;  
+&nbsp;&nbsp;&nbsp;**StarFighters XSL**&nbsp;&nbsp;  
+&nbsp;&nbsp;&nbsp;**ASPX File**&nbsp;&nbsp;  
+&nbsp;&nbsp;&nbsp;**PHP File**&nbsp;&nbsp;  
 
 # Install in Debian
 
-    git clone https://github.com/hackplayers/empire-mod-hackplayers.git
+    git clone https://github.com/cybervaca/Empire-test-mod
     cd empire-mod-hackplayers/setup/
     sudo apt-get update > /dev/null
     ./install.sh
     cd ..
     ./empire
 
-![empire_mod_hackplayers.png logo](./empire_mod_hackplayers.png)  
-
-# Video Demo
-[![Demo Video](./img/main.png)](https://www.youtube.com/watch?v=vp721ZhiQOo)
