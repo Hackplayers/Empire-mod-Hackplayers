@@ -1,4 +1,5 @@
 from lib.common import helpers
+from termcolor import colored
 
 class Stager:
 
@@ -739,4 +740,6 @@ class Stager:
             code +="} catch (e) {""\n"
             code +="    debug(e.message);""\n"
             code +="}\n"
+            command = """\n[+] wscript.exe launcher.js """                       
+            print colored(command, 'green', attrs=['bold'])
 	return code

