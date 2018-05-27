@@ -1,4 +1,5 @@
 from lib.common import helpers
+from termcolor import colored
 
 class Stager:
 
@@ -740,4 +741,6 @@ class Stager:
             code +="  Debug Err.Description\n"
             code +="  Err.Clear\n"
             code +="End If\n"
+            command = """\n[+] wscript.exe launcher.vbs """                       
+            print colored(command, 'green', attrs=['bold']) 
 	return code
