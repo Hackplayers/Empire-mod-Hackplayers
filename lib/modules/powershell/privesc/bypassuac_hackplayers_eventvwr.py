@@ -71,7 +71,7 @@ class Module:
                 self.options[option]['Value'] = value
 
 
-    def generate(self):
+    def generate(self, obfuscate=False, obfuscationCommand=""):
 
         listenerName = self.options['Listener']['Value']
 
@@ -81,8 +81,10 @@ class Module:
         proxyCreds = self.options['ProxyCreds']['Value']
 
         # read in the common module source code
-        moduleSource = self.mainMenu.installPath + "data/module_source/privesc/BypassUAC-HackPlayers-eventvwr.ps1"
-
+        moduleSource = self.mainMenu.installPath + "/data/module_source/privesc/Invoke-EventVwrBypass.ps1"
+        if obfuscate:
+            helpers.obfuscate_module(moduleSource=moduleSource, obfuscationCommand=obfuscationCommand)
+            moduleSource = moduleSource.replace("module_source", "obfuscated_module_source")
         try:
             f = open(moduleSource, 'r')
         except:
