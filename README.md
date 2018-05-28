@@ -22,7 +22,7 @@ PowerShell Empire mod to post-exploit the World! Linux, MacOS, Windows.
        |_______||__|  |__| | _|      |__| | _| `._____||_______|  Mod: HackPlayers
        
        
-       292 modules currently loaded
+       293 modules currently loaded
        
        0 listeners currently active
        
