@@ -31,6 +31,7 @@ if lsb_release -d | grep -q "Fedora"; then
 	pip install pyinstaller
 	pip install zlib_wrapper
 	pip install netifaces
+	pip install termcolor
 elif lsb_release -d | grep -q "Kali"; then
 	Release=Kali
     echo "deb http://security.debian.org/debian-security wheezy/updates main" >> /etc/apt/sources.list
