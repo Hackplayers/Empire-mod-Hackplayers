@@ -74,7 +74,7 @@ class Module:
                     self.options[option]['Value'] = value
 
 
-    def generate(self):
+    def generate(self, obfuscate=False, obfuscationCommand=""):
         
         # the PowerShell script itself, with the command to invoke
         #   for execution appended to the end. Scripts should output
@@ -82,11 +82,8 @@ class Module:
         #
         # the script should be stripped of comments, with a link to any
         #   original reference script included in the comments.
-
-
-        # if you're reading in a large, external script that might be updates,
-        #   use the pattern below
-        # read in the common module source code
+        script = """
+"""
         moduleSource = self.mainMenu.installPath + "data/module_source/code_execution/doublepulsar.ps1"
         try:
             f = open(moduleSource, 'r')
