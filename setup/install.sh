@@ -49,6 +49,7 @@ elif lsb_release -d | grep -q "Kali"; then
 	pip install pyinstaller
 	pip install zlib_wrapper
 	pip install netifaces
+	pip install termcolor
         if ! which powershell > /dev/null; then
             if uname -a | grep -q amd64; then
                 wget http://archive.ubuntu.com/ubuntu/pool/main/i/icu/libicu52_52.1-3_amd64.deb
@@ -90,6 +91,7 @@ elif lsb_release -d | grep -q "Ubuntu"; then
 	pip install pyinstaller
 	pip install zlib_wrapper
 	pip install netifaces
+	pip install termcolor
         if ! which powershell > /dev/null; then
             curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
             if lsb_release -r | grep -q "14.04"; then
@@ -120,6 +122,7 @@ else
 	 pip install zlib_wrapper
 	 pip install netifaces
 	 pip install M2Crypto
+	 pip install termcolor
          if ! which powershell > /dev/null; then
             if lsb_release -d | grep -q Debian | grep 9; then
               if uname -a | grep -q amd64; then
