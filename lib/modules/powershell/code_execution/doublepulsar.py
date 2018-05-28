@@ -95,7 +95,7 @@ class Module:
         f.close()
 
         script = moduleCode
-	script += "doublepulsar "
+	scriptEnd = "doublepulsar "
         # add any arguments to the end execution of the script
         for option,values in self.options.iteritems():
             if option.lower() != "agent":
