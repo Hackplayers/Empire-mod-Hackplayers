@@ -48,6 +48,7 @@ PowerShell Empire mod to post-exploit the World! Linux, MacOS, Windows.
 &nbsp;&nbsp;&nbsp;**Get-ShellContent**&nbsp;&nbsp; (This script leverages modified strings2 to extract the input and output of any commandline process)  
 &nbsp;&nbsp;&nbsp;**Invoke-VNC**&nbsp;&nbsp; (This module loads a VNC server into RAM.)  
 &nbsp;&nbsp;&nbsp;**Powercat**&nbsp;&nbsp; (Netcat: The powershell version.)  
+&nbsp;&nbsp;&nbsp;**Capcom-Elevatepid.ps1**&nbsp;&nbsp; (Escalation privileges.)  
 
 # Stagers added
 &nbsp;&nbsp;&nbsp;**StarFighters JS**&nbsp;&nbsp;  
